@@ -26,7 +26,7 @@ public class Mensajeria {
     private String nombreCompleto;
 
     @NotBlank(message = "El correo es obligatorio")
-    @Email(message = "El formato del correo no es válido")
+    @Email(message = "El formato del correo no es valido")
     @Column(nullable = false, length = 150)
     private String correo;
 

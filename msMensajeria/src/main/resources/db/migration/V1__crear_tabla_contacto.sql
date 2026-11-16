@@ -1,0 +1,8 @@
+CREATE TABLE contacto (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre_completo VARCHAR(150) NOT NULL,
+    correo VARCHAR(150) NOT NULL,
+    mensaje TEXT NOT NULL,
+    estado VARCHAR(20) NOT NULL DEFAULT 'PENDIENTE',
+    fecha_creacion DATETIME NOT NULL
+);
