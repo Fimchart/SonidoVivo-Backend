@@ -3,10 +3,10 @@ package cl.duoc.msMensajeria.controller;
 import cl.duoc.msMensajeria.model.Mensajeria;
 import cl.duoc.msMensajeria.service.MensajeriaService;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/mensajes")
@@ -52,4 +52,7 @@ public class MensajeriaController {
         }
         return ResponseEntity.notFound().build();
     }
-}
+}  
+  
+
+
