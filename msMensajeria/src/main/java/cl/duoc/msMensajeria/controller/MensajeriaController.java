@@ -13,20 +13,16 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:5173")
 public class MensajeriaController {
 
-
     private final MensajeriaService service;
 
     public MensajeriaController(MensajeriaService service) {
         this.service = service;
     }
 
-
-
     @GetMapping
     public ResponseEntity<List<Mensajeria>> listar() {
         return ResponseEntity.ok(service.listar());
     }
-
 
     @PostMapping
     public ResponseEntity<Mensajeria> guardar(@Valid @RequestBody Mensajeria contacto) {
@@ -34,16 +30,14 @@ public class MensajeriaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
-
-    @PutMapping("/{id}/responder")
-    public ResponseEntity<Mensajeria> responder(@PathVariable Long id) {
-        Mensajeria actualizado = service.marcarRespondido(id);
+    @PutMapping("/{id}/visto")
+    public ResponseEntity<Mensajeria> marcarVisto(@PathVariable Long id) {
+        Mensajeria actualizado = service.marcarVisto(id);
         if (actualizado != null) {
             return ResponseEntity.ok(actualizado);
         }
         return ResponseEntity.notFound().build();
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
@@ -52,7 +46,4 @@ public class MensajeriaController {
         }
         return ResponseEntity.notFound().build();
     }
-}  
-  
-
-
+}
