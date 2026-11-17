@@ -8,7 +8,7 @@ import cl.duoc.msUsuarios.model.Usuarios;
 import cl.duoc.msUsuarios.repository.UsuariosRepository;
 import jakarta.annotation.PostConstruct;
 
-@Service 
+@Service
 public class UsuariosService {
 
     private final UsuariosRepository repository;
@@ -18,7 +18,6 @@ public class UsuariosService {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }
-
 
     @PostConstruct
     public void crearAdminsIniciales() {
@@ -43,13 +42,10 @@ public class UsuariosService {
             throw new RuntimeException("El correo ya está registrado");
         }
         usuario.setId(null);
-        if (usuario.getRol() == null || usuario.getRol().isBlank()) {
-            usuario.setRol("CLIENTE");
-        }
+        usuario.setRol("CLIENTE");
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-            return repository.save(usuario);
+        return repository.save(usuario);
     }
-
 
     public Optional<Usuarios> login(String email, String password) {
         return repository.findByEmailIgnoreCase(email)
@@ -59,5 +55,4 @@ public class UsuariosService {
     public List<Usuarios> listarTodos() {
         return repository.findAll();
     }
-
 }
