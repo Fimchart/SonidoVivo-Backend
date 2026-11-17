@@ -21,8 +21,8 @@ public class UsuariosService {
 
     @PostConstruct
     public void crearAdminsIniciales() {
-        crearAdminSiNoExiste("Thomas", "Admin", "ThomasAdmin@sonidovivo.cl", "Thomas2024!");
-        crearAdminSiNoExiste("Matias", "Admin", "MatiasAdmin@sonidovivo.cl", "Matias2024!");
+        crearAdminSiNoExiste("Thomas", "Escobar", "ThomasAdmin@sonidovivo.cl", "Thomas2024!");
+        crearAdminSiNoExiste("Matias", "Pavez", "MatiasAdmin@sonidovivo.cl", "Matias2024!");
     }
 
     private void crearAdminSiNoExiste(String nombre, String apellido, String email, String password) {
