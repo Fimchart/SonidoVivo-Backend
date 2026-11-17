@@ -32,10 +32,10 @@ public class MensajeriaService {
         return repository.findAll();
     }
 
-    // Actualizar estado a RESPONDIDO (para panel admin)
-    public Mensajeria marcarRespondido(Long id) {
+    // Actualizar estado a VISTO (para panel admin)
+    public Mensajeria marcarVisto(Long id) {
         return repository.findById(id).map(msg -> {
-            msg.setEstado("RESPONDIDO");
+            msg.setEstado("VISTO");
             return repository.save(msg);
         }).orElse(null);
     }
