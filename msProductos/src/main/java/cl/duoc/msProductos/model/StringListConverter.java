@@ -1,4 +1,4 @@
-package main.java.cl.duoc.msProductos.model;
+package cl.duoc.msProductos.model;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

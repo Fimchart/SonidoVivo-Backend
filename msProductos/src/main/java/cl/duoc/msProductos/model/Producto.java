@@ -1,4 +1,4 @@
-package main.java.cl.duoc.msProductos.model;
+package cl.duoc.msProductos.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

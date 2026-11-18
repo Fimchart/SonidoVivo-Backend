@@ -1,4 +1,4 @@
-package main.java.cl.duoc.msProductos.controller;
+package cl.duoc.msProductos.controller;
 
 import cl.duoc.msProductos.model.Producto;
 import cl.duoc.msProductos.service.ProductoService;

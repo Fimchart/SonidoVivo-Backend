@@ -1,4 +1,4 @@
-package main.java.cl.duoc.msProductos.repository;
+package cl.duoc.msProductos.repository;
 
 import cl.duoc.msProductos.model.Producto;
 import java.util.List;
