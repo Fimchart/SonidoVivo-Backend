@@ -1,55 +1,56 @@
 package cl.duoc.msVentas.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
-
 @Entity
 @Table(name = "ventas")
+@Schema(description = "Orden de compra o boleta registrada en Sonido Vivo")
 public class Venta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "ID autogenerado de la venta", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
     @Column(name = "usuario_id")
+    @Schema(description = "ID del usuario comprador", example = "1")
     private Long usuarioId;
 
     @Column(name = "usuario_email", nullable = false, length = 150)
+    @Schema(description = "Correo electrónico del comprador", example = "cliente@sonidovivo.cl", requiredMode = Schema.RequiredMode.REQUIRED)
     private String usuarioEmail;
 
     @Column(name = "usuario_nombre", nullable = false, length = 150)
+    @Schema(description = "Nombre completo del comprador", example = "Juan Pérez", requiredMode = Schema.RequiredMode.REQUIRED)
     private String usuarioNombre;
 
     @Column(nullable = false)
+    @Schema(description = "Fecha y hora de registro asignada por el servidor", accessMode = Schema.AccessMode.READ_ONLY)
     private LocalDateTime fecha;
 
     @Column(nullable = false)
+    @Schema(description = "Monto total calculado automáticamente en el servidor", example = "149990", accessMode = Schema.AccessMode.READ_ONLY)
     private Long total;
 
     @Column(nullable = false, length = 40)
+    @Schema(description = "Estado actual de la venta", example = "COMPLETADA", allowableValues = {"COMPLETADA", "ENVIADO", "ENTREGADO", "ANULADA"})
     private String estado = "COMPLETADA";
 
     @Column(name = "metodo_pago", length = 80)
+    @Schema(description = "Método de pago utilizado", example = "Webpay / Tarjeta")
     private String metodoPago = "Webpay / Tarjeta";
 
     @Column(name = "direccion_envio", length = 255)
+    @Schema(description = "Dirección de despacho", example = "Av. Providencia 1234, Santiago")
     private String direccionEnvio;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "venta_id", nullable = false)
+    @Schema(description = "Lista de productos incluidos en la compra", requiredMode = Schema.RequiredMode.REQUIRED)
     private List<DetalleVenta> detalles = new ArrayList<>();
 
     public Venta() {
